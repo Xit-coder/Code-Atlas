@@ -1,0 +1,49 @@
+{
+  "name": "codeatlas",
+  "description": "Exploração determinística da estrutura de código-fonte",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.22.0 <25"
+  },
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "format:check": "prettier --check apps packages tests scripts '*.ts' '*.json' '*.html' '*.md' 'docs/*.md' .github/workflows/ci.yml",
+    "build": "cf workers types && tsc --noEmit && vite build",
+    "pretypecheck": "cf workers types",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "db:migrate": "node --env-file=.env.local scripts/migrate.mjs",
+    "db:smoke": "node --env-file=.env.local scripts/db-smoke.mjs",
+    "cf:check": "cf deploy --dry-run",
+    "dev:proxy": "node --use-env-proxy --env-file=.env.local scripts/proxy-runtime.mjs",
+    "test:live": "node --use-env-proxy --env-file=.env.local scripts/live-smoke.mjs"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "1.2.1",
+    "@tanstack/react-query": "5.107.1",
+    "drizzle-orm": "0.45.4",
+    "hono": "4.13.18",
+    "lucide-react": "1.73.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "2.0.0-beta.v.17",
+    "@playwright/test": "1.65.1",
+    "@tailwindcss/vite": "4.3.5",
+    "@types/node": "24.10.0",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "cf": "1.0.0-beta.32",
+    "miniflare": "5.20261113.0-beta",
+    "prettier": "3.10.1",
+    "tailwindcss": "4.3.5",
+    "typescript": "7.0.2",
+    "vite": "8.3.8",
+    "vitest": "5.1.0"
+  }
+}
