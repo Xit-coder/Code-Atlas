@@ -6,12 +6,12 @@
 
 - cloudflare.config.ts: Worker codeatlas em production; codeatlas-dev nos outros modos, compatibilidade 2026-11-14, nodejs_compat, assets com SPA fallback e prioridade /api/*, secret DATABASE_URL, rate limiter, logs e traces.
 - Neon exclusivo, branch de desenvolvimento migrada e main intacta.
-- Git local independente em /workspace/codeatlas, branch main, sem remote enquanto o GitHub não for criado.
+- Git local independente em /workspace/codeatlas, branch main, com origin em https://github.com/Xit-coder/Code-Atlas.git. O commit inicial remoto é preservado por merge, sem force push.
 - GitHub Actions de validação; deploy automático deliberadamente ausente nesta fase.
 
 ## Bloqueios e resolução
 
-GitHub: conector autenticado como Xit-coder; buscas instaladas e por conta não encontraram CodeAtlas. Ferramentas expostas não incluem criação de repositório. gh auth status falhou para GH_TOKEN. Para concluir, conectar uma identidade GitHub com permissão de criar repositórios no ambiente, ou criar um repositório vazio `Xit-coder/codeatlas` e conceder ao conector acesso a ele. Não envie tokens no chat. Após acesso: confirmar repositório vazio, configurar remote, revisar arquivos e publicar somente o CodeAtlas.
+GitHub: repositório existente confirmado como [Xit-coder/Code-Atlas](https://github.com/Xit-coder/Code-Atlas), com acesso pelo conector e origin local configurado. Não criar outro repositório. O histórico remoto inicial e o commit local ce233ca devem ser preservados por merge e push normal. A autenticação da CLI Git é independente do conector; se falhar, conectar a credencial ao ambiente com acesso Contents: Read and write e Workflows: Read and write (o projeto contém um workflow), ou token clássico com repo e workflow. Não envie tokens no chat nem os coloque na URL do remote. A confirmação de publicação exige comparar o SHA de refs/heads/main e a árvore remota após o push.
 
 Cloudflare: OAuth acessa conta e lista Workers. A consulta de subscriptions retornou 403: o endpoint não oferece OAuth scope e exige API token com Billing Read (ou conferência humana no painel). Não alterar planos. O dry-run funciona sem credenciais de deploy. Para provisionar/publicar, confirmar plano/limites e conectar token com Workers Scripts Write, Account Settings Read e permissões específicas dos bindings necessários, por variável protegida CLOUDFLARE_API_TOKEN. O token do conector não é automaticamente uma credencial da CLI.
 

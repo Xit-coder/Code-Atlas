@@ -1,4 +1,6 @@
-# CodeAtlas
+# Code-Atlas
+
+Interactive code architecture explorer — visualize repositories, dependencies, functions and software structures.
 
 Exploração determinística da estrutura de código-fonte. **v0.1.0 — incremento da Fase 0; produto completo ainda não entregue.**
 
@@ -47,4 +49,4 @@ Para Chromium instalado no sistema, defina `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`
 
 Pendentes: parser Tree-sitter, processamento assíncrono, persistência de análises, contas e propriedade, React Flow, Monaco, relatórios, comparações e publicação. Java/Go/Rust/C# são expansões futuras. A inspeção de origem não importa arquivos nem inicia análise.
 
-Licença: MIT. Repositório remoto ainda não criado; não há link GitHub ou deploy publicado.
+Licença: MIT. Repositório: [Xit-coder/Code-Atlas](https://github.com/Xit-coder/Code-Atlas). Não há deploy publicado.
