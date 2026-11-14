@@ -1,5 +1,7 @@
 # Fase 0 — entrega do primeiro incremento
 
+Atualização posterior: [publicação da interface/API e pendência do segredo do banco](DEPLOYMENT_2026-11-14.md). Este relatório mantém o registro original do incremento local.
+
 Data: 2026-11-14. **Incremento local validado; Fase 0 ainda tem pendências externas.** O CodeAtlas completo não está concluído e não foi publicado.
 
 ## Arquivos

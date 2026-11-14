@@ -49,4 +49,6 @@ Para Chromium instalado no sistema, defina `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`
 
 Pendentes: parser Tree-sitter, processamento assíncrono, persistência de análises, contas e propriedade, React Flow, Monaco, relatórios, comparações e publicação. Java/Go/Rust/C# são expansões futuras. A inspeção de origem não importa arquivos nem inicia análise.
 
-Licença: MIT. Repositório: [Xit-coder/Code-Atlas](https://github.com/Xit-coder/Code-Atlas). Não há deploy publicado.
+Licença: MIT. Repositório: [Xit-coder/Code-Atlas](https://github.com/Xit-coder/Code-Atlas).
+
+Versão pública da Fase 0: **https://codeatlas.erickhatano.workers.dev**. Interface e API publicadas; a conexão do Worker com o Neon aguarda autorização explícita para configurar o segredo DATABASE_URL. O motor de análise permanece pendente. [Evidência da publicação](docs/DEPLOYMENT_2026-11-14.md).

@@ -4,7 +4,7 @@
 
 React/TypeScript strict + Vite/Tailwind em Static Assets e API Hono/Zod no mesmo Cloudflare Worker: uma origem para web/API, sem CORS amplo nem outro servidor web. TanStack Query controla timeout, erros e cache local de diagnóstico. React Flow e Monaco entrarão na Fase 3, quando existirem resultados reais; Zustand somente se necessário.
 
-Neon PostgreSQL 17 exclusivo, região AWS us-east-1, branch dev-phase-0 isolada de main. Driver @neondatabase/serverless por HTTP para consultas curtas e transações em lote; sem pool TCP residente no Worker. Drizzle tipa o esquema; SQL versionado é a fonte de verdade das migrações nesta fase. Hyperdrive com pg permanece uma otimização a avaliar com medições, não um segundo caminho simultâneo de conexão.
+Neon PostgreSQL 17 exclusivo, região AWS us-east-1, branch dev-phase-0 isolada da main usada para publicação. Driver @neondatabase/serverless por HTTP para consultas curtas e transações em lote; sem pool TCP residente no Worker. Drizzle tipa o esquema; SQL versionado é a fonte de verdade das migrações nesta fase. Hyperdrive com pg permanece uma otimização a avaliar com medições, não um segundo caminho simultâneo de conexão.
 
 O Worker HTTP não fará parsing de repositórios inteiros. O Worker Free tem 10 ms CPU por invocação, insuficientes para essa promessa. Motor planejado: Python isolado, Tree-sitter com gramáticas Python/JS/TS e representação intermediária própria, sem executar conteúdo importado. Runner local primeiro; serviço Render somente se os testes e limites do runtime justificarem hospedagem e os custos forem autorizados.
 
