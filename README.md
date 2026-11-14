@@ -51,4 +51,4 @@ Pendentes: parser Tree-sitter, processamento assíncrono, persistência de anál
 
 Licença: MIT. Repositório: [Xit-coder/Code-Atlas](https://github.com/Xit-coder/Code-Atlas).
 
-Versão pública da Fase 0: **https://codeatlas.erickhatano.workers.dev**. Interface e API publicadas; a conexão do Worker com o Neon aguarda autorização explícita para configurar o segredo DATABASE_URL. O motor de análise permanece pendente. [Evidência da publicação](docs/DEPLOYMENT_2026-11-14.md).
+Versão pública da Fase 0: **https://codeatlas.erickhatano.workers.dev**. Interface e API publicadas e conectadas ao Neon com credencial somente de leitura; readiness e testes E2E públicos aprovados. O motor de análise permanece pendente. [Evidência da publicação](docs/DEPLOYMENT_2026-11-14.md).

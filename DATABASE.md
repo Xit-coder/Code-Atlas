@@ -1,6 +1,6 @@
 # Banco de dados
 
-Neon exclusivo: projeto `royal-cloud-93187622` (codeatlas), PostgreSQL 17, AWS us-east-1. Desenvolvimento: `br-curly-credit-bb7iooc4` (dev-phase-0). A main recebeu a migração 0001 e um registro técnico de smoke durante a publicação; dev-phase-0 permanece isolada. A credencial codeatlas_runtime é somente de leitura e aguarda autorização para ser configurada na Cloudflare. Organização Free verificada; compute 0.25 CU. A política de suspensão é gerida pelo plano, pois a API recusou definir esse intervalo manualmente.
+Neon exclusivo: projeto `royal-cloud-93187622` (codeatlas), PostgreSQL 17, AWS us-east-1. Desenvolvimento: `br-curly-credit-bb7iooc4` (dev-phase-0). A main recebeu a migração 0001 e um registro técnico de smoke durante a publicação; dev-phase-0 permanece isolada. A credencial codeatlas_runtime é somente de leitura e está configurada como segredo DATABASE_URL na Cloudflare, após autorização explícita do usuário. Organização Free verificada; compute 0.25 CU. A política de suspensão é gerida pelo plano, pois a API recusou definir esse intervalo manualmente.
 
 ## Migração 0001
 

@@ -2,21 +2,21 @@
 
 URL pública da Fase 0: **https://codeatlas.erickhatano.workers.dev**.
 
-Interface e API publicadas na Cloudflare. **A conexão do Worker com o Neon aguarda autorização explícita para configurar DATABASE_URL.** Readiness responde 503/not_configured e a interface mostra PostgreSQL indisponível. O motor de análise permanece pendente.
+Interface e API publicadas na Cloudflare e conectadas ao Neon. **Readiness responde 200/ready e o banco aparece conectado na interface.** O motor de análise permanece pendente.
 
 ## Versão e recursos
 
 - Código da aplicação: commit 1dd40be706e9c84092e1ea3990d540c4b4efe642.
-- Worker codeatlas; versão ebf6fd73-c14a-4728-8817-3bdf2c370736, implantação fd7b9983-1941-4fc4-bad1-68a0b7ccd559, 100% do tráfego.
+- Worker codeatlas; versão 1e343c96-cd9c-44b5-bbec-6a74dd49f589, implantação cf4cc2c9-135f-48c4-8543-72ba5b12e6b8, 100% do tráfego.
 - Static Assets: três arquivos, SPA fallback e prioridade /api/*. INSPECT_LIMITER: 10 inspeções/minuto/IP/localidade. Logs e traces habilitados.
 - Neon exclusivo: PostgreSQL 17, main migrada em transação; runtime codeatlas_runtime somente de leitura. Desenvolvimento isolado na dev-phase-0.
 - Repositório único: https://github.com/Xit-coder/Code-Atlas. GitHub Actions Validate valida sem deploy automático.
 
-## Autorização pendente
+## Segredo e permissões
 
-A revisão automática bloqueou o envio da credencial Neon como secret_text, exigindo autorização explícita para transferi-la à Cloudflare. A publicação prosseguiu sem credencial de banco. A permissão solicitada é configurar DATABASE_URL do papel codeatlas_runtime como segredo no Worker codeatlas, por HTTPS. O valor não será publicado no site nem no GitHub.
+Após autorização explícita do usuário, DATABASE_URL do papel codeatlas_runtime foi configurada como secret_text no Worker codeatlas. O valor foi enviado por HTTPS e não aparece no site nem no GitHub. O papel é somente de leitura, sem INSERT em projects. A primeira publicação sem segredo foi substituída pela versão integrada.
 
-Após autorização: configurar o segredo sem exibir seu valor, testar readiness 200, smoke live e E2E de banco/GitHub e registrar a nova versão. Não transmitir a credencial antes da autorização.
+Readiness 200, smoke live e três testes E2E públicos de banco/GitHub foram aprovados após configurar o segredo. Não ampliar permissões do papel nem expor o valor em logs.
 
 ## Reproduzir e atualizar
 
@@ -32,6 +32,6 @@ Cloudflare Billing Read não está disponível pelo OAuth: subscriptions retorna
 
 CODEATLAS_BASE_URL=https://codeatlas.erickhatano.workers.dev npm run test:e2e
 
-Testes externos respeitam HTTPS_PROXY/HTTP_PROXY. Chromium precisa acessar seu NSS de certificados confiáveis; manter validação TLS habilitada. Após autorizar o banco, adicionar CODEATLAS_LIVE=1 e executar o smoke live com a URL pública.
+Testes externos respeitam HTTPS_PROXY/HTTP_PROXY. Chromium precisa acessar seu NSS de certificados confiáveis; manter validação TLS habilitada. Para incluir o teste real de banco, adicionar CODEATLAS_LIVE=1. Para o smoke, usar CODEATLAS_SMOKE_URL=https://codeatlas.erickhatano.workers.dev npm run test:live.
 
 Resultados e evidências: [relatório da publicação](docs/DEPLOYMENT_2026-11-14.md).
